@@ -1,6 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext.kotlin_version = '1.9.0'
 
     repositories {
         google()
@@ -10,6 +11,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.4.2'
         classpath 'io.github.gradle-nexus:publish-plugin:2.0.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -37,6 +39,7 @@ ext {
     compileSdkVersion = 34
 
     // App dependencies
+    kotlinVersion = '1.9.0'
     appCompatVersion = '1.7.0'
     materialVersion = '1.9.0'
     constraintlayoutVersion = '2.1.4'

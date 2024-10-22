@@ -3,8 +3,9 @@ package lens24.camera;
 import android.hardware.Camera;
 import android.os.Handler;
 import android.os.Message;
-import androidx.annotation.RestrictTo;
 import android.util.Log;
+
+import androidx.annotation.RestrictTo;
 
 import java.lang.ref.WeakReference;
 
@@ -36,9 +37,9 @@ public final class ScanManagerHandler extends Handler {
 
     private static final int MSG_SEND_AUTO_FOCUS_COMPLETE = 7;
 
-    private WeakReference<ScanManager> mWeakScanManager;
+    private WeakReference<IScanManager> mWeakScanManager;
 
-    public ScanManagerHandler(ScanManager manager) {
+    public ScanManagerHandler(IScanManager manager) {
         mWeakScanManager = new WeakReference<>(manager);
     }
 
@@ -72,7 +73,7 @@ public final class ScanManagerHandler extends Handler {
 
     @Override
     public void handleMessage(Message msg) {
-        ScanManager scanManager = mWeakScanManager.get();
+        IScanManager scanManager = mWeakScanManager.get();
         if (scanManager == null) {
             if (DBG) Log.d(TAG, "Got message for dead activity");
             return;

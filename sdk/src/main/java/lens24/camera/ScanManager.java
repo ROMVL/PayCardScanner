@@ -1,28 +1,42 @@
 package lens24.camera;
 
+import static lens24.ndk.RecognitionConstants.RECOGNIZER_MODE_DATE;
+import static lens24.ndk.RecognitionConstants.RECOGNIZER_MODE_GRAB_CARD_IMAGE;
+import static lens24.ndk.RecognitionConstants.RECOGNIZER_MODE_NAME;
+import static lens24.ndk.RecognitionConstants.RECOGNIZER_MODE_NUMBER;
+import static lens24.ndk.RecognitionConstants.RecognitionMode;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
-import android.hardware.*;
+import android.hardware.Camera;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.util.Log;
 import android.view.Display;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
+
 import androidx.annotation.MainThread;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
-import lens24.camera.widget.CameraPreviewLayout;
-import lens24.camera.widget.CardDetectionStateView;
-import lens24.ndk.*;
-import lens24.utils.Constants;
 
 import java.util.Locale;
 
-import static lens24.ndk.RecognitionConstants.*;
+import lens24.camera.widget.CameraPreviewLayout;
+import lens24.camera.widget.CardDetectionStateView;
+import lens24.ndk.DisplayConfigurationImpl;
+import lens24.ndk.RecognitionConstants;
+import lens24.ndk.RecognitionCore;
+import lens24.ndk.RecognitionResult;
+import lens24.ndk.RecognitionStatusListener;
+import lens24.utils.Constants;
 
 @RestrictTo(RestrictTo.Scope.LIBRARY)
-public final class ScanManager {
+public final class ScanManager implements IScanManager {
 
     private static final int DEFAULT_RECOGNITION_MODE = RECOGNIZER_MODE_NUMBER | RECOGNIZER_MODE_DATE
             | RECOGNIZER_MODE_NAME | RECOGNIZER_MODE_GRAB_CARD_IMAGE;
@@ -32,7 +46,7 @@ public final class ScanManager {
 
     private static SurfaceHolder sSurfaceHolder;
 
-    private final @RecognitionConstants.RecognitionMode int mRecognitionMode;
+    private final @RecognitionMode int mRecognitionMode;
 
     private final Context mAppContext;
 
@@ -174,6 +188,7 @@ public final class ScanManager {
         setRecognitionCoreIdle(false);
     }
 
+    @Override
     public void onPause() {
         if (DBG) Log.d(TAG, "onPause()");
         setRecognitionCoreIdle(true);
@@ -195,10 +210,12 @@ public final class ScanManager {
         mWindowRotationListener.unregister();
     }
 
+    @Override
     public void resumeScan() {
         setRecognitionCoreIdle(false);
     }
 
+    @Override
     public void toggleFlash() {
         if (mRenderThread == null) return;
         RenderThread.RenderHandler rh = mRenderThread.getHandler();
@@ -217,6 +234,7 @@ public final class ScanManager {
         return ((WindowManager)mAppContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
     }
 
+    @Override
     public void resetResult() {
         if (DBG) Log.d(TAG, "resetResult()");
         mRecognitionCore.resetResult();
@@ -239,6 +257,7 @@ public final class ScanManager {
         }
     }
 
+    @Override
     public void setRecognitionCoreIdle(boolean idle) {
         if (DBG) Log.d(TAG, "setRecognitionCoreIdle() called with: " +  "idle = [" + idle + "]");
         mRecognitionCore.setIdle(idle);
@@ -267,53 +286,62 @@ public final class ScanManager {
                 cardCameraRect);
     }
 
+    @Override
     @MainThread
-    void onCameraOpened(Camera.Parameters parameters) {
+    public void onCameraOpened(Camera.Parameters parameters) {
         Camera.Size previewSize = parameters.getPreviewSize();
         setupCardDetectionCameraParameters(previewSize.width, previewSize.height);
         if (mCallbacks != null) mCallbacks.onCameraOpened(parameters);
     }
 
+    @Override
     @MainThread
-    void onOpenCameraError(Exception e) {
+    public void onOpenCameraError(Exception e) {
         if (DBG) Log.d(TAG, "onOpenCameraError() called with: " +  "e = [" + e + "]");
         if (mCallbacks != null) mCallbacks.onOpenCameraError(e);
         mRenderThread = null;
     }
 
+    @Override
     @MainThread
-    void onRenderThreadError(Throwable e) {
+    public void onRenderThreadError(Throwable e) {
         // XXX
         if (DBG) Log.d(TAG, "onRenderThreadError() called with: " +  "e = [" + e + "]");
         if (mCallbacks != null) mCallbacks.onOpenCameraError((Exception) e);
         mRenderThread = null;
     }
 
+    @Override
     @MainThread
-    void onFrameProcessed(int newBorders) {
+    public void onFrameProcessed(int newBorders) {
         if (mCallbacks != null) mPreviewLayout.getDetectionStateOverlay().setDetectionState(newBorders);
     }
 
+    @Override
     @MainThread
-    void onFpsReport(String fpsReport) {
+    public void onFpsReport(String fpsReport) {
         if (mCallbacks != null) mCallbacks.onFpsReport(fpsReport);
     }
 
+    @Override
     @MainThread
-    void onAutoFocusMoving(boolean isStart, String focusMode) {
+    public void onAutoFocusMoving(boolean isStart, String focusMode) {
         if (mCallbacks != null) mCallbacks.onAutoFocusMoving(isStart, focusMode);
     }
 
+    @Override
     @MainThread
-    void onAutoFocusComplete(boolean isSuccess, String focusMode) {
+    public void onAutoFocusComplete(boolean isSuccess, String focusMode) {
         if (mCallbacks != null) mCallbacks.onAutoFocusComplete(isSuccess, focusMode);
     }
 
+    @Override
     public void freezeCameraPreview() {
         if (DBG) Log.d(TAG, "freezeCameraPreview() called with: " +  "");
         if (mRenderThread != null) mRenderThread.getHandler().sendFreeze();
     }
 
+    @Override
     public void unfreezeCameraPreview() {
         if (DBG) Log.d(TAG, "unfreezeCameraPreview() called with: " +  "");
         if (mRenderThread != null) {

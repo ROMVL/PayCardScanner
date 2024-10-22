@@ -17,6 +17,7 @@ ext {
 }
 
 apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
+apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -69,6 +70,9 @@ android {
 
     resourcePrefix "lens24_"
     namespace 'lens24.sdk'
+    kotlinOptions {
+        jvmTarget = '11'
+    }
 }
 
 dependencies {
