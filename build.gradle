@@ -37,9 +37,7 @@ ext {
     compileSdkVersion = 34
 
     // App dependencies
-    appCompatVersion = '1.6.1'
+    appCompatVersion = '1.7.0'
     materialVersion = '1.9.0'
     constraintlayoutVersion = '2.1.4'
-    lottieVersion = '6.1.0'
-    adsVersion = '23.3.0'
 }

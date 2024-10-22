@@ -1,19 +1,19 @@
 apply plugin: 'com.android.library'
 
 ext {
-    PUBLISH_GROUP_ID = 'io.github.vlasentiy'
+    PUBLISH_GROUP_ID = 'io.github.ROMVL'
     PUBLISH_VERSION = '1.1.5'
-    PUBLISH_ARTIFACT_ID = 'lens24'
-    PUBLISH_DESCRIPTION = 'Lens24 Android SDK'
-    PUBLISH_URL = 'https://github.com/vlasentiy/Lens24'
+    PUBLISH_ARTIFACT_ID = 'PayCardScanner'
+    PUBLISH_DESCRIPTION = 'PayCardScanner Android SDK'
+    PUBLISH_URL = 'https://github.com/ROMVL/PayCardScanner'
     PUBLISH_LICENSE_NAME = 'MIT License'
-    PUBLISH_LICENSE_URL = 'https://github.com/vlasentiy/Lens24/blob/master/LICENSE.md'
-    PUBLISH_DEVELOPER_ID = 'vlas'
-    PUBLISH_DEVELOPER_NAME = 'Vlas Artanov'
-    PUBLISH_DEVELOPER_EMAIL = 'vlas.artanov@gmail.com'
-    PUBLISH_SCM_CONNECTION = 'scm:git:github.com/vlasentiy/Lens24.git'
-    PUBLISH_SCM_DEVELOPER_CONNECTION = 'scm:git:ssh://github.com/vlasentiy/Lens24.git'
-    PUBLISH_SCM_URL = 'https://github.com/vlasentiy/Lens24/tree/master'
+    PUBLISH_LICENSE_URL = 'https://github.com/ROMVL/PayCardScanner/blob/master/LICENSE.md'
+    PUBLISH_DEVELOPER_ID = 'ROMVL'
+    PUBLISH_DEVELOPER_NAME = 'Vladyslav Romanik'
+    PUBLISH_DEVELOPER_EMAIL = 'romanik.vladislav@gmail.com'
+    PUBLISH_SCM_CONNECTION = 'scm:git:github.com/ROMVL/PayCardScanner.git'
+    PUBLISH_SCM_DEVELOPER_CONNECTION = 'scm:git:ssh://github.com/ROMVL/PayCardScanner.git'
+    PUBLISH_SCM_URL = 'https://github.com/ROMVL/PayCardScanner/tree/master'
 }
 
 apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
@@ -36,14 +36,7 @@ android {
             }
         }
     }
-//    splits {
-//        abi {
-//            enable true
-//            reset()
-//            include 'armeabi-v7a', 'arm64-v8a', 'x86_64'
-//            universalApk true
-//        }
-//    }
+
     externalNativeBuild {
         cmake {
             path "src/main/cpp/CMakeLists.txt"
@@ -81,5 +74,4 @@ android {
 dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintlayoutVersion"
     implementation "androidx.appcompat:appcompat:$rootProject.ext.appCompatVersion"
-    implementation "com.airbnb.android:lottie:$rootProject.ext.lottieVersion"
 }
