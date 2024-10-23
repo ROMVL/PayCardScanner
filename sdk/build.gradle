@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
 
 ext {
-    PUBLISH_GROUP_ID = 'io.github.ROMVL'
-    PUBLISH_VERSION = '1.1.5'
+    PUBLISH_GROUP_ID = 'io.github.romvl'
+    PUBLISH_VERSION = '1.0.0'
     PUBLISH_ARTIFACT_ID = 'PayCardScanner'
     PUBLISH_DESCRIPTION = 'PayCardScanner Android SDK'
     PUBLISH_URL = 'https://github.com/ROMVL/PayCardScanner'
