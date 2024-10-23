@@ -34,6 +34,8 @@
 -keep class paycardscanner.camera.widget.ScanCardOverlayViewKt { *; }
 -keep class paycardscanner.camera.widget.PreviewLayout { *; }
 -keep class paycardscanner.utils.CardScanManagerUtilsKt { *; }
+-keep class paycardscanner.camera.IScanManager { *; }
+-keep class paycardscanner.camera.CardScanManager { *; }
 
 -keep class paycardscanner.sdk.* {
     public protected *;
