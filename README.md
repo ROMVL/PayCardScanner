@@ -12,17 +12,18 @@ You can easily integrate and customize the SDK into your app by following the in
 In your `build.gradle`, add maven repository to repositories list
 
 ```
-    dependencyResolutionManagement {
-		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-		repositories {
-			mavenCentral()
-			maven { url 'https://jitpack.io' }
-		}
-	}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+	maven { url 'https://jitpack.io' }
+    }
+}
 ```
 
 <br />
 Add PayCardScanner as a dependency
+
 ```
 dependencies {
     implementation 'com.github.ROMVL:PayCardScanner:1.0.0'
