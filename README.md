@@ -1,10 +1,10 @@
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.vlasentiy/lens24/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.vlasentiy/lens24)
+[![jitpack.io](https://jitpack.io/v/ROMVL/PayCardScanner.svg)](https://jitpack.io/#ROMVL/PayCardScanner)
 [![API](https://img.shields.io/badge/API-16%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=16)
 <a href="https://github.com/ROMVL/PayCardScanner/blob/master/LICENSE.md">
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Lens24 is released under the MIT license." />
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="PayCardScanner is released under the MIT license." />
   </a>
 
-Lens24 is SDK for Android that gives you ability to scan various of credit or payment cards in your app offline.
+PayCardScanner is SDK for Android that gives you ability to scan various of credit or payment cards in your app offline.
 You can easily integrate and customize the SDK into your app by following the instructions below.
 
 ### SDK integration
@@ -12,16 +12,20 @@ You can easily integrate and customize the SDK into your app by following the in
 In your `build.gradle`, add maven repository to repositories list
 
 ```
-    repositories {
-        mavenCentral()
-    }
+    dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
+	}
 ```
 
 <br />
-Add _Lens24_ as a dependency
+Add PayCardScanner as a dependency
 ```
 dependencies {
-    implementation 'io.github.romvl:paycardscanner:1.0.0'
+    implementation 'com.github.ROMVL:PayCardScanner:1.0.0'
 }
 ```
 
