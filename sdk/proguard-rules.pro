@@ -36,6 +36,7 @@
 -keep class paycardscanner.utils.CardScanManagerUtilsKt { *; }
 -keep class paycardscanner.camera.IScanManager { *; }
 -keep class paycardscanner.camera.CardScanManager { *; }
+-keep class paycardscanner.camera.CardScanManager { *; }
 
 -keep class paycardscanner.sdk.* {
     public protected *;
@@ -73,3 +74,6 @@
   public *;
 }
 -keep class paycardscanner.intent.** { *; }
+
+-keep class kotlin.** { *; }
+-keep class kotlinx.** { *; }
