@@ -25,6 +25,9 @@ android {
     testBuildType "profiling"
 
     defaultConfig {
+        versionCode 1
+        versionName "1.0.0"
+
         minSdkVersion rootProject.ext.minSdkVersionSdk
         targetSdkVersion rootProject.ext.targetSdkVersion
 

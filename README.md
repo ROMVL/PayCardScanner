@@ -66,7 +66,6 @@ class MyActivity : AppCompatActivity {
             .setManualInputButtonText("Manual input")
             .setBottomHint("bottom hint")
             .setMainColor(R.color.primary_color_dark)
-            .setLottieJsonAnimation("lottie json data") //// version [1.0.0..2.0.0)
             .build()
 
         startActivityIntent.launch(intent)
