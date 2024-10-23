@@ -37,7 +37,7 @@ public:
     
 public:
     
-    virtual void SetRecognitionMode(Lens24RecognizerMode flag);
+    virtual void SetRecognitionMode(PayCardScannerRecognizerMode flag);
     
     virtual void Deploy();
     
@@ -71,7 +71,7 @@ public:
     
     virtual void SetPathNameListTxt(const string& path);
     
-    virtual void SetOrientation(Lens24RecognizerOrientation orientation);
+    virtual void SetOrientation(PayCardScannerRecognizerOrientation orientation);
     
     virtual bool IsIdle() const;
     virtual void SetIdle(bool isIdle);
@@ -116,9 +116,9 @@ private:
     vector<ParametricLine> _edges;
     size_t _bufferSizeY;
     
-    Lens24RecognizerOrientation _orientation;
+    PayCardScannerRecognizerOrientation _orientation;
     
-    Lens24RecognizerMode _mode;
+    PayCardScannerRecognizerMode _mode;
     
     bool _deployed;
 };

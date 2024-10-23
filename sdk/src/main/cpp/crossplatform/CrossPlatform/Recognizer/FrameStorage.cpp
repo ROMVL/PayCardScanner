@@ -15,7 +15,7 @@
 
 static const Size lowSize = Size(660,416);
 
-CFrameStorage::CFrameStorage() : _grayOrientation(Lens24RecognizerOrientationUnknown), _yuvOrientation(Lens24RecognizerOrientationUnknown)
+CFrameStorage::CFrameStorage() : _grayOrientation(PayCardScannerRecognizerOrientationUnknown), _yuvOrientation(PayCardScannerRecognizerOrientationUnknown)
 {
     int bufferHeightY = 1280;
     int bytesPerRowY = 720;
@@ -37,13 +37,13 @@ CFrameStorage::~CFrameStorage()
     free(_bufferUV);
 }
 
-bool CFrameStorage::SetRawFrame(const Mat& rawFrame, const vector<ParametricLine>& edges, Lens24RecognizerOrientation orientation)
+bool CFrameStorage::SetRawFrame(const Mat& rawFrame, const vector<ParametricLine>& edges, PayCardScannerRecognizerOrientation orientation)
 {
     if (!NormalizeMatrix(rawFrame, edges, _frame)) return false;
 
     _grayOrientation = orientation;
     
-    if (_grayOrientation != Lens24RecognizerOrientationPortraitUpsideDown && _grayOrientation != Lens24RecognizerOrientationPortrait) {
+    if (_grayOrientation != PayCardScannerRecognizerOrientationPortraitUpsideDown && _grayOrientation != PayCardScannerRecognizerOrientationPortrait) {
         
         CUtils::RotateMatrix90n(_frame, _frame, 90);
     }
@@ -65,7 +65,7 @@ bool CFrameStorage::NormalizeMatrix(const Mat& matrix, const vector<ParametricLi
 
 }
 
-void CFrameStorage::SetRawY(const void* rawY, const void* rawUV, const vector<ParametricLine>& edges, Lens24RecognizerOrientation orientation)
+void CFrameStorage::SetRawY(const void* rawY, const void* rawUV, const vector<ParametricLine>& edges, PayCardScannerRecognizerOrientation orientation)
 {
     memcpy(_bufferY, rawY, _bufferSizeY);
     memcpy(_bufferUV, rawUV, _bufferSizeUV);
@@ -95,7 +95,7 @@ const void* CFrameStorage::GetYMat()
     return _bufferY;
 }
 
-const Lens24RecognizerOrientation CFrameStorage::GetYUVOrientation()
+const PayCardScannerRecognizerOrientation CFrameStorage::GetYUVOrientation()
 {
     return _yuvOrientation;
 }

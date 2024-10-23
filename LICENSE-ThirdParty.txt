@@ -1,5 +1,5 @@
 This document contains the list of Third Party Software included with 
-Lens24 library, along with the license information.
+PayCardScanner library, along with the license information.
 
 Project: PayCards_Android
 URL: https://pay.cards/pages/sdk.html

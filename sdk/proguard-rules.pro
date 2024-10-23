@@ -27,16 +27,21 @@
 -dontoptimize
 -dontobfuscate
 
--keep class lens24.ndk.RecognitionCore { *; }
--dontnote lens24.ndk.RecognitionCore
+-keep class paycardscanner.ndk.RecognitionCore { *; }
+-dontnote paycardscanner.ndk.RecognitionCore
+-keep class paycardscanner.camera.widget.CardOverlayView { *; }
+-keep class paycardscanner.camera.widget.ScanCardOverlayView { *; }
+-keep class paycardscanner.camera.widget.ScanCardOverlayViewKt { *; }
+-keep class paycardscanner.camera.widget.PreviewLayout { *; }
+-keep class paycardscanner.utils.CardScanManagerUtilsKt { *; }
 
--keep class lens24.sdk.* {
+-keep class paycardscanner.sdk.* {
     public protected *;
 }
 
 -keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,*Annotation*,EnclosingMethod
 
--keep class lens24.ndk.* {
+-keep class paycardscanner.ndk.* {
     public protected *;
 }
 
@@ -65,7 +70,4 @@
 -keep public class **.R$* {
   public *;
 }
--keep class lens24.intent.** { *; }
-
--keep class kotlin.** { *; }
--keep class kotlinx.** { *; }
+-keep class paycardscanner.intent.** { *; }
