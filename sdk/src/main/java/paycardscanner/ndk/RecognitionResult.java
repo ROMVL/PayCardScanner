@@ -9,7 +9,6 @@ import androidx.annotation.RestrictTo;
 
 import java.util.Objects;
 
-@RestrictTo(RestrictTo.Scope.LIBRARY)
 public final class RecognitionResult implements Parcelable {
 
     @Nullable
