@@ -66,3 +66,6 @@
   public *;
 }
 -keep class lens24.intent.** { *; }
+
+-keep class kotlin.** { *; }
+-keep class kotlinx.** { *; }
