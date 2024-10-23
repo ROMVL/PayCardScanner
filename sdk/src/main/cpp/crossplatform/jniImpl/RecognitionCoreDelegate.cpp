@@ -41,7 +41,7 @@ CRecognitionCoreDelegate::CRecognitionCoreDelegate(void * env)
     JNIEnv *_env = (JNIEnv*)env;
     _env->GetJavaVM(&_jvm);
 
-    jclass tmp = _env->FindClass("lens24/ndk/RecognitionCoreNdk");
+    jclass tmp = _env->FindClass("paycardscanner/ndk/RecognitionCoreNdk");
     _clazz = (jclass)_env->NewGlobalRef(tmp);
 
     _clazzByteArray = (jclass)_env->NewGlobalRef(_env->FindClass("[B"));
@@ -69,7 +69,7 @@ CRecognitionCoreDelegate::CRecognitionCoreDelegate(void * env)
 
 }
 
-void CRecognitionCoreDelegate::RecognitionDidFinish(const shared_ptr<IRecognitionResult> &result, Lens24RecognizerMode resultFlags)
+void CRecognitionCoreDelegate::RecognitionDidFinish(const shared_ptr<IRecognitionResult> &result, PayCardScannerRecognizerMode resultFlags)
 {
     JNIEnv *jenv = nullptr;
     jstring jnumber = nullptr;
@@ -86,10 +86,10 @@ void CRecognitionCoreDelegate::RecognitionDidFinish(const shared_ptr<IRecognitio
 
     try {
         // isFirst
-        jisFirst = (jboolean) (resultFlags & Lens24RecognizerModeNumber ? JNI_TRUE : JNI_FALSE);
+        jisFirst = (jboolean) (resultFlags & PayCardScannerRecognizerModeNumber ? JNI_TRUE : JNI_FALSE);
 
         // isFinal
-        jisFinal = (jboolean) (resultFlags & Lens24RecognizerModeName ? JNI_TRUE : JNI_FALSE);
+        jisFinal = (jboolean) (resultFlags & PayCardScannerRecognizerModeName ? JNI_TRUE : JNI_FALSE);
 
         // number
         shared_ptr<INeuralNetworkResultList> numberResult = result->GetNumberResult();

@@ -54,32 +54,32 @@ extern "C" {
         env->SetIntField(jRectDst, bottomFieldID, cvRect.y + cvRect.width);
     }
 
-    static inline Lens24RecognizerOrientation getFromJOrientation(int jWorkAreaOrientation) {
+    static inline PayCardScannerRecognizerOrientation getFromJOrientation(int jWorkAreaOrientation) {
         switch (jWorkAreaOrientation) {
             case 1 :
-                return Lens24RecognizerOrientationPortrait; // WORK_AREA_ORIENTATION_PORTRAIT
+                return PayCardScannerRecognizerOrientationPortrait; // WORK_AREA_ORIENTATION_PORTRAIT
             case 2 :
-                return Lens24RecognizerOrientationPortraitUpsideDown; // WORK_AREA_ORIENTATION_PORTRAIT_UPSIDE_DOWN
+                return PayCardScannerRecognizerOrientationPortraitUpsideDown; // WORK_AREA_ORIENTATION_PORTRAIT_UPSIDE_DOWN
             case 3 :
-                return Lens24RecognizerOrientationLandscapeRight; // WORK_AREA_ORIENTATION_LANDSCAPE_RIGHT
+                return PayCardScannerRecognizerOrientationLandscapeRight; // WORK_AREA_ORIENTATION_LANDSCAPE_RIGHT
             case 4 :
-                return Lens24RecognizerOrientationLandscapeLeft; // WORK_AREA_ORIENTATION_LANDSCAPE_LEFT
+                return PayCardScannerRecognizerOrientationLandscapeLeft; // WORK_AREA_ORIENTATION_LANDSCAPE_LEFT
             default:
-                return Lens24RecognizerOrientationUnknown;
+                return PayCardScannerRecognizerOrientationUnknown;
         }
     }
 
-    static inline const char *woOrientationName(Lens24RecognizerOrientation v) {
+    static inline const char *woOrientationName(PayCardScannerRecognizerOrientation v) {
         switch (v) {
-            case Lens24RecognizerOrientationPortrait:
+            case PayCardScannerRecognizerOrientationPortrait:
                 return "Portrait";
-            case Lens24RecognizerOrientationPortraitUpsideDown:
+            case PayCardScannerRecognizerOrientationPortraitUpsideDown:
                 return "Portrait Upside-down";
-            case Lens24RecognizerOrientationLandscapeRight:
+            case PayCardScannerRecognizerOrientationLandscapeRight:
                 return "Landscape right";
-            case Lens24RecognizerOrientationLandscapeLeft:
+            case PayCardScannerRecognizerOrientationLandscapeLeft:
                 return "Landscape left";
-            case Lens24RecognizerOrientationUnknown:
+            case PayCardScannerRecognizerOrientationUnknown:
             default:
                 return "Unknown";
         }
@@ -129,16 +129,16 @@ extern "C" {
 
         IRecognitionCore::GetInstance(g_core, coreDelegate, torchDelegate);
 
-        g_core->SetRecognitionMode((Lens24RecognizerMode) (Lens24RecognizerModeNumber
-                                                           | Lens24RecognizerModeName
-                                                           | Lens24RecognizerModeDate));
+        g_core->SetRecognitionMode((PayCardScannerRecognizerMode) (PayCardScannerRecognizerModeNumber
+                                                                   | PayCardScannerRecognizerModeName
+                                                                   | PayCardScannerRecognizerModeDate));
     }
 
     JNIEXPORT void JNICALL
     Java_lens24_ndk_RecognitionCoreNdk_nativeSetRecognitionMode(JNIEnv *env,
                                                                                       jobject instance,
                                                                                       jint recognitionMode) {
-        g_core->SetRecognitionMode((Lens24RecognizerMode)recognitionMode);
+        g_core->SetRecognitionMode((PayCardScannerRecognizerMode)recognitionMode);
     }
 
     JNIEXPORT void JNICALL

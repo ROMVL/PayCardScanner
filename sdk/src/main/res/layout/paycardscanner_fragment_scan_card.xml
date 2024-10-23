@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/payCardScanner_fl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:keepScreenOn="true"
+    tools:context="paycardscanner.ui.ScanCardActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/payCardScanner_main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        tools:visibility="visible">
+
+        <include
+            android:id="@+id/payCardScanner_include"
+            layout="@layout/paycardscanner_include_card_detection_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/payCardScanner_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/paycardscanner_toolbar_gradient"
+            app:contentInsetLeft="16dp"
+            app:contentInsetStart="16dp"
+            app:contentInsetStartWithNavigation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationContentDescription="@android:string/cancel"
+            app:subtitleTextAppearance="@style/payCardScanner_ScannerToolbarTitleStyle"
+            app:titleMarginStart="8dp"
+            app:titleTextAppearance="@style/payCardScanner_ScannerToolbarTitleStyle"
+            tools:title="@string/paycardscanner_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <paycardscanner.ui.views.ProgressBarIndeterminate
+        android:id="@+id/payCardScanner_progress_bar"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <View
+        android:id="@+id/payCardScanner_view"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|center"
+        android:background="@drawable/paycardscanner_toolbar_gradient"
+        android:rotation="180"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/payCardScanner_bManual"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/paycardscanner_ripple_background"
+        android:enabled="false"
+        android:textAllCaps="false"
+        android:textColor="@color/paycardscanner_accent_color"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/payCardScanner_main_content"
+        app:layout_constraintStart_toEndOf="@+id/payCardScanner_main_content"
+        tools:ignore="TouchTargetSizeCheck"
+        tools:text="@string/paycardscanner_button_enter_card_number"
+        tools:visibility="visible" />
+
+</FrameLayout>

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="lens24.sdk">
+    package="paycardscanner.sdk">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
@@ -17,9 +17,9 @@
 
     <application>
         <activity
-            android:name="lens24.ui.ScanCardActivity"
+            android:name="paycardscanner.ui.ScanCardActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/lens24_Theme" />
+            android:theme="@style/payCardScanner_Theme" />
     </application>
 
 

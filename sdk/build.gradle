@@ -25,8 +25,8 @@ android {
     testBuildType "profiling"
 
     defaultConfig {
-        versionCode 1001
-        versionName "1.0.1"
+        versionCode 2000
+        versionName "2.0.0"
 
         minSdkVersion rootProject.ext.minSdkVersionSdk
         targetSdkVersion rootProject.ext.targetSdkVersion
@@ -71,8 +71,8 @@ android {
         targetCompatibility JavaVersion.VERSION_11
     }
 
-    resourcePrefix "lens24_"
-    namespace 'lens24.sdk'
+    resourcePrefix "paycardscanner_"
+    namespace 'paycardscanner.sdk'
     kotlinOptions {
         jvmTarget = '11'
     }
