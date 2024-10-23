@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 ext {
     PUBLISH_GROUP_ID = 'io.github.romvl'
-    PUBLISH_VERSION = '2.0.2'
+    PUBLISH_VERSION = '2.0.3'
     PUBLISH_ARTIFACT_ID = 'PayCardScanner'
     PUBLISH_DESCRIPTION = 'PayCardScanner Android SDK'
     PUBLISH_URL = 'https://github.com/ROMVL/PayCardScanner'
@@ -25,8 +25,8 @@ android {
     testBuildType "profiling"
 
     defaultConfig {
-        versionCode 2002
-        versionName "2.0.2"
+        versionCode 2003
+        versionName "2.0.3"
 
         minSdkVersion rootProject.ext.minSdkVersionSdk
         targetSdkVersion rootProject.ext.targetSdkVersion

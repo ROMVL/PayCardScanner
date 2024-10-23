@@ -86,7 +86,7 @@ extern "C" {
     }
 
     JNIEXPORT void JNICALL
-    Java_lens24_ndk_RecognitionCoreNdk_nativeSetDataPath(JNIEnv *env, jobject instance,
+    Java_paycardscanner_ndk_RecognitionCoreNdk_nativeSetDataPath(JNIEnv *env, jobject instance,
                                                                    jstring path_) {
         std::string stdPath;
 
@@ -119,7 +119,7 @@ extern "C" {
     }
 
     JNIEXPORT void JNICALL
-    Java_lens24_ndk_RecognitionCoreNdk_nativeInit(JNIEnv *env, jclass type) {
+    Java_paycardscanner_ndk_RecognitionCoreNdk_nativeInit(JNIEnv *env, jclass type) {
 
         shared_ptr<IRecognitionCoreDelegate> coreDelegate;
         IRecognitionCoreDelegate::GetInstance(coreDelegate, env);
@@ -135,20 +135,20 @@ extern "C" {
     }
 
     JNIEXPORT void JNICALL
-    Java_lens24_ndk_RecognitionCoreNdk_nativeSetRecognitionMode(JNIEnv *env,
+    Java_paycardscanner_ndk_RecognitionCoreNdk_nativeSetRecognitionMode(JNIEnv *env,
                                                                                       jobject instance,
                                                                                       jint recognitionMode) {
         g_core->SetRecognitionMode((PayCardScannerRecognizerMode)recognitionMode);
     }
 
     JNIEXPORT void JNICALL
-    Java_lens24_ndk_RecognitionCoreNdk_nativeDeploy(JNIEnv *env,
+    Java_paycardscanner_ndk_RecognitionCoreNdk_nativeDeploy(JNIEnv *env,
                                                                        jobject instance) {
         g_core->Deploy();
     }
 
     JNIEXPORT void JNICALL
-    Java_lens24_ndk_RecognitionCoreNdk_nativeSetOrientation(JNIEnv *env,
+    Java_paycardscanner_ndk_RecognitionCoreNdk_nativeSetOrientation(JNIEnv *env,
                                                                             jobject instance,
                                                                             jint cardRectOrientation) {
         LOGI("nativeSetOrientation() orientation: %s", woOrientationName(getFromJOrientation(cardRectOrientation)));
@@ -156,7 +156,7 @@ extern "C" {
     }
 
     JNIEXPORT void JNICALL
-    Java_lens24_ndk_RecognitionCoreNdk_nativeCalcWorkingArea(JNIEnv *env,
+    Java_paycardscanner_ndk_RecognitionCoreNdk_nativeCalcWorkingArea(JNIEnv *env,
                                                                          jobject instance,
                                                                          jint frameWidth,
                                                                          jint frameHeight,
@@ -168,38 +168,38 @@ extern "C" {
     }
 
     JNIEXPORT void JNICALL
-    Java_lens24_ndk_RecognitionCoreNdk_nativeDestroy(JNIEnv *env, jclass type) {
+    Java_paycardscanner_ndk_RecognitionCoreNdk_nativeDestroy(JNIEnv *env, jclass type) {
         g_core = nullptr;
     }
 
     JNIEXPORT void JNICALL
-    Java_lens24_ndk_RecognitionCoreNdk_nativeResetResult(JNIEnv *env,
+    Java_paycardscanner_ndk_RecognitionCoreNdk_nativeResetResult(JNIEnv *env,
                                                                          jobject instance) {
         g_core->ResetResult();
     }
 
     JNIEXPORT void JNICALL
-    Java_lens24_ndk_RecognitionCoreNdk_nativeSetIdle(JNIEnv *env, jobject instance,
+    Java_paycardscanner_ndk_RecognitionCoreNdk_nativeSetIdle(JNIEnv *env, jobject instance,
                                                                      jboolean idle) {
         g_core->SetIdle(idle);
 
     }
 
     JNIEXPORT jboolean JNICALL
-    Java_lens24_ndk_RecognitionCoreNdk_nativeIsIdle(JNIEnv *env,
+    Java_paycardscanner_ndk_RecognitionCoreNdk_nativeIsIdle(JNIEnv *env,
                                                                     jobject instance) {
         return (jboolean) g_core->IsIdle();
     }
 
     JNIEXPORT void JNICALL
-    Java_lens24_ndk_RecognitionCoreNdk_nativeSetTorchStatus(JNIEnv *env,
+    Java_paycardscanner_ndk_RecognitionCoreNdk_nativeSetTorchStatus(JNIEnv *env,
                                                                             jobject instance,
                                                                             jboolean isTurnedOn) {
         g_core->SetTorchStatus(isTurnedOn);
     }
 
     JNIEXPORT jint JNICALL
-    Java_lens24_ndk_RecognitionCoreNdk_nativeProcessFrameYV12(JNIEnv *env,
+    Java_paycardscanner_ndk_RecognitionCoreNdk_nativeProcessFrameYV12(JNIEnv *env,
                                                                               jobject instance,
                                                                               jint src_width,
                                                                               jint src_height,
