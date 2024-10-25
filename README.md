@@ -26,7 +26,7 @@ Add PayCardScanner as a dependency
 
 ```
 dependencies {
-    implementation 'com.github.ROMVL:PayCardScanner:1.0.0'
+    implementation 'com.github.ROMVL:PayCardScanner:2.0.4'
 }
 ```
 
