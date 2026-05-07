@@ -12,8 +12,12 @@ add_subdirectory(crossplatform)
 add_library(data SHARED CardRecognizer-jni.cpp)
 
 target_link_libraries(data
+        PRIVATE
         crossplatform
         libyuv
         log
         z)
 
+target_link_options(data PRIVATE
+        "-Wl,-z,max-page-size=16384"
+        "-Wl,-z,common-page-size=16384")
