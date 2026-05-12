@@ -1,5 +1,5 @@
-[![jitpack.io](https://jitpack.io/v/ROMVL/PayCardScanner.svg)](https://jitpack.io/#ROMVL/PayCardScanner)
-[![API](https://img.shields.io/badge/API-16%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=16)
+[![](https://jitpack.io/v/ROMVL/PayCardScanner.svg)](https://jitpack.io/#ROMVL/PayCardScanner)
+
 <a href="https://github.com/ROMVL/PayCardScanner/blob/master/LICENSE.md">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="PayCardScanner is released under the MIT license." />
   </a>
